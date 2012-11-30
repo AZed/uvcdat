@@ -312,7 +312,7 @@ macro (add_cdat_package package)
   endif()
 endmacro (add_cdat_package)
 
-find_package(Qt4 REQUIRED)
+find_package(Qt4 4.8 REQUIRED)
 # Do we download the data ?
 option(CDAT_DOWNLOADS_SAMPLE_DATA "Download sample data" ON)
 if (CDAT_DOWNLOADS_SAMPLE_DATA)
