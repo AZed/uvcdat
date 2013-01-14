@@ -31,6 +31,7 @@ set(CMAKE_MODULE_PATH
   ${cdat_CMAKE_SOURCE_DIR}
   ${cdat_CMAKE_SOURCE_DIR}/cmake_modules
   ${cdat_CMAKE_SOURCE_DIR}/cdat_modules
+  ${cdat_CMAKE_SOURCE_DIR}/cdat_modules_extra
   ${cdat_CMAKE_BINARY_DIR}
   ${CMAKE_MODULE_PATH}
 )
@@ -242,7 +243,6 @@ include(fontconfig_pkg)
 include(freetype_pkg)
 include(g2clib_pkg)
 include(g2clib_pkg)
-include(gdal_pkg)
 include(geos_pkg)
 include(gui_support_pkg)
 include(hdf5_pkg)
