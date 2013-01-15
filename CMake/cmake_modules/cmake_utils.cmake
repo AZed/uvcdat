@@ -173,10 +173,14 @@ endmacro()
 
 # Add cdat package but provides an user with an option to use-system
 # installation of the project. The main difference with add_cdat_package
-# is that here the system package has to be used if build package
-# is turned OFF.
+# is that here the system package name could be different
 #-----------------------------------------------------------------------------
 macro(add_cdat_package_or_use_system package_name system_package_name)
+  if ("${package_name}" STREQUAL "${system_package_name}")
+    add_cdat_package("${package_name}")
+    return()
+  endif()
+
   string(TOUPPER ${package_name} uc_package)
   string(TOLOWER ${package_name} lc_package)
   string(TOUPPER ${system_package_name} uc_sys_package)
@@ -195,7 +199,6 @@ macro(add_cdat_package_or_use_system package_name system_package_name)
    endif()
 
   add_cdat_package("${package_name}" "" "${message}" ON OFF)
-  set_property(CACHE CDAT_USE_SYSTEM_${uc_package} PROPERTY TYPE INTERNAL)
 
   if(NOT "${dependencies}" STREQUAL "")
     cmake_dependent_option(CDAT_BUILD_${uc_package} "${message}" ON "${dependencies}" OFF)
@@ -218,10 +221,11 @@ macro(add_cdat_package_or_use_system package_name system_package_name)
     set_property(CACHE CDAT_USE_SYSTEM_${uc_package} PROPERTY VALUE ON)
 
     if(EXISTS "${cdat_CMAKE_SOURCE_DIR}/cdat_modules_extra/${lc_sys_package}_sys.cmake")
-      message("File exists")
       include(${lc_sys_package}_sys)
     endif()
   endif()
 
+  # Never show this option in the GUI
+  set_property(CACHE CDAT_USE_SYSTEM_${uc_package} PROPERTY TYPE INTERNAL)
 endmacro()
 
