@@ -208,6 +208,7 @@ macro(add_cdat_package_or_use_system package_name system_package_name)
     message(FATAL_ERROR "[ERROR] ${system_package_name} is REQUIRED but not found")
   endif()
 
+  # If both build and use system are ON, then build package wins
   if(CDAT_BUILD_${uc_package})
     set_property(CACHE CDAT_USE_SYSTEM_${uc_sys_package} PROPERTY VALUE OFF)
   endif()
@@ -220,10 +221,6 @@ macro(add_cdat_package_or_use_system package_name system_package_name)
       message("File exists")
       include(${lc_sys_package}_sys)
     endif()
-  endif()
-
-  if(${dependencies} AND NOT CDAT_BUILD_${uc_package} AND NOT CDAT_USE_SYSTEM_${uc_sys_package})
-    message(FATAL_ERROR "[ERROR] Either build ${package_name} or use ${system_package_name}")
   endif()
 
 endmacro()
