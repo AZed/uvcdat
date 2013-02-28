@@ -6,7 +6,11 @@ endif()
 set(ENV{CPPFLAGS} "-I@cdat_EXTERNALS@/include -I@cdat_EXTERNALS@/include/cairo @ADDITIONAL_CPPFLAGS@")
 set(ENV{CXXFLAGS} "-I@cdat_EXTERNALS@/include -I@cdat_EXTERNALS@/include/cairo @ADDITIONAL_CXXFLAGS@")
 set(ENV{CFLAGS} "-w -I@cdat_EXTERNALS@/include -I@cdat_EXTERNALS@/include/cairo @ADDITIONAL_CFLAGS@")
-set(ENV{LOCNCCONFIG} "@cdat_EXTERNALS@/bin/nc-config")
+
+# Only when not using system NetCDF
+#set(ENV{LOCNCCONFIG} "@cdat_EXTERNALS@/bin/nc-config")
+set(ENV{LOCNCCONFIG} "/usr/bin/nc-config")
+
 set(ENV{EXTERNALS} "@cdat_EXTERNALS@")
 set(ENV{PKG_CONFIG_PATH} "@cdat_EXTERNALS@/lib/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:$ENV{PKG_CONFIG_PATH}")
 set(ENV{PKG_CONFIG} @cdat_PKG_CONFIG_EXECUTABLE@)
