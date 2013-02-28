@@ -16,6 +16,7 @@ FIND_PATH(READLINE_INCLUDE_DIR readline.h
 )
 
 FIND_LIBRARY(READLINE_LIBRARY readline
+  /lib/x86_64-linux-gnu/
   /usr/lib
   /usr/local/lib
 )

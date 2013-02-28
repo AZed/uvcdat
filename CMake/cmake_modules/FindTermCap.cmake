@@ -17,6 +17,7 @@ FIND_PATH( TERMCAP_INCLUDE_DIR termcap.h
 
 FIND_LIBRARY( TERMCAP_LIBRARY termcap
   /usr/lib
+  /usr/lib/x86_64-linux-gnu/
   /usr/local/lib
 )
 
